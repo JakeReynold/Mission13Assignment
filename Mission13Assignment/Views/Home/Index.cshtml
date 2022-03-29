@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Bowlers";
+}
+
+@model List<Bowler>
+
+    <div class="row m-1 p-1">
+        <div class="col-2 text-center">
+            <h1>Teams</h1>
+            <div>
+                <a class="btn btn-block btn-outline-primary" asp-controller="Home" asp-action="Index">Home</a>
+
+                @foreach (Team t in ViewBag.Teams)
+                {
+                    <a asp-controller="Home" asp-action="Index" asp-route-teamName="@t.TeamName"
+                       class="btn btn-block @(ViewBag.TeamName == t.TeamName ? "btn-primary" : "btn-outline-primary") ">@t.TeamName</a>
+                }
+            </div>
+        </div>
+        <div class="col-10">
+            <h1>@(ViewBag.TeamName != null ? ViewBag.TeamName : "All Bowlers")</h1>
+            <table class="table table-hover text-center table-bordered">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Address</td>
+                        <td>City</td>
+                        <td>State</td>
+                        <td>Zip Code</td>
+                        <td>Phone Number</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                    <tr>
+                        <td>@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName</td>
+                        <td>@x.BowlerAddress</td>
+                        <td>@x.BowlerCity</td>
+                        <td>@x.BowlerState</td>
+                        <td>@x.BowlerZip</td>
+                        <td>@x.BowlerPhoneNumber</td>
+
+
+                        <td class="text-center"><a asp-controller="Home" asp-action="Edit" asp-route-bowlerID="@x.BowlerID" class="btn btn-warning">Edit</a></td>
+                        <td class="text-center"><a asp-controller="Home" asp-action="Delete" asp-route-bowlerID="@x.BowlerID" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>

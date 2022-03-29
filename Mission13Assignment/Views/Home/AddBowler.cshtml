@@ -1,0 +1,71 @@
+﻿@{
+}
+
+@model Mission13Assignment.Models.Bowler
+
+<h1 class="text-center">Welcome to the Big Balling Bowling League!</h1><br />
+
+
+<div class="col px-md-5">
+    <h3>Please enter your information below</h3>
+
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label asp-for="BowlerFirstName">First Name:</label>
+            <input asp-for="BowlerFirstName" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerLastName">Last Name:</label>
+            <input asp-for="BowlerLastName" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerMiddleInit">Middle Initial (optional):</label>
+            <input asp-for="BowlerMiddleInit" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TeamID">Team:</label>
+            <select asp-for="TeamID">
+                <option>Select your team</option>
+                @foreach (Team x in ViewBag.Teams)
+                {
+                    <option value="@x.TeamID">@x.TeamName</option>
+                }
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerAddress">Address:</label>
+            <input asp-for="BowlerAddress" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerCity">City:</label>
+            <input asp-for="BowlerCity" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerState">State:</label>
+            <input asp-for="BowlerState" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerZip">Zip Code:</label>
+            <input asp-for="BowlerZip" /><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BowlerPhoneNumber">Phone Number:</label>
+            <input asp-for="BowlerPhoneNumber" /><br /><br />
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Become a Big Baller</button>
+        </div>    
+    </form>
+</div>
+
