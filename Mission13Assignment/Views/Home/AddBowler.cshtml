@@ -5,13 +5,15 @@
 
 <h1 class="text-center">Welcome to the Big Balling Bowling League!</h1><br />
 
-
+@*Form for adding and editing bowler information*@
 <div class="col px-md-5">
     <h3>Please enter your information below</h3>
 
     <form method="post">
+        @*provides a div for any error messages that might occur*@
         <div asp-validation-summary="All"></div>
 
+        @*All inputs follow this format and are connected to an attribute of the bowler class*@
         <div class="form-group">
             <label asp-for="BowlerFirstName">First Name:</label>
             <input asp-for="BowlerFirstName" /><br />
@@ -27,6 +29,7 @@
             <input asp-for="BowlerMiddleInit" /><br />
         </div>
 
+        @*this input pulls from the ViewBag.Teams to dynamically create dropdown options*@
         <div class="form-group">
             <label asp-for="TeamID">Team:</label>
             <select asp-for="TeamID">
@@ -64,6 +67,7 @@
         </div>
 
         <div class="form-group">
+            @*Button for submitting the form*@
             <button class="btn btn-primary" type="submit">Become a Big Baller</button>
         </div>    
     </form>

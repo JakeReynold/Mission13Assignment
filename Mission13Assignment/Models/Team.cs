@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mission13Assignment.Models
 {
+    //This class provides the template for all instances of the Team class
     public class Team
     {
         [Key]

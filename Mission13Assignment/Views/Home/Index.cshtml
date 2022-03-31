@@ -4,7 +4,10 @@
 
 @model List<Bowler>
 
+@*Sets a row to be divided into columns*@
     <div class="row m-1 p-1">
+
+        @*Creates a list of buttons to filter bowlers by teams*@
         <div class="col-2 text-center">
             <h1>Teams</h1>
             <div>
@@ -18,7 +21,9 @@
             </div>
         </div>
         <div class="col-10">
+            @*Dynamically sets the header of the webpage to team name or to "All Bowlers" if no team is selected*@
             <h1>@(ViewBag.TeamName != null ? ViewBag.TeamName : "All Bowlers")</h1>
+            @*Table to display bowler information*@
             <table class="table table-hover text-center table-bordered">
                 <thead>
                     <tr>
@@ -30,6 +35,8 @@
                         <td>Phone Number</td>
                     </tr>
                 </thead>
+
+                @*Loops through the list of bowlers passed through the model to display them*@
                 <tbody>
                     @foreach (var x in Model)
                     {
@@ -41,7 +48,7 @@
                         <td>@x.BowlerZip</td>
                         <td>@x.BowlerPhoneNumber</td>
 
-
+                        @*Buttons that link to edit and delete pages for each bowler*@
                         <td class="text-center"><a asp-controller="Home" asp-action="Edit" asp-route-bowlerID="@x.BowlerID" class="btn btn-warning">Edit</a></td>
                         <td class="text-center"><a asp-controller="Home" asp-action="Delete" asp-route-bowlerID="@x.BowlerID" class="btn btn-danger">Delete</a></td>
                     </tr>
